@@ -1,0 +1,7 @@
+clock timezone UTC +2
+!
+interface loopback666
+    ip address 6.6.6.6 255.255.255.255
+    description *** Added by Netmiko ***
+    no shutdown
+exit
