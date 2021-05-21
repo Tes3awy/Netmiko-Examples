@@ -1,6 +1,6 @@
 # Netmiko Examples
 
-In `netmiko` folder, you will find eight Python examples, one `.csv` file, one `.txt` file and a `requirements.txt`file.
+In `netmiko` folder, you will find 12 Python examples, one `.csv` file, one `.txt` file and a `requirements.txt`file.
 
 ## How to use?
 
@@ -11,7 +11,7 @@ In `netmiko` folder, you will find eight Python examples, one `.csv` file, one `
 3. Open CMD or PowerShell within `netmiko` folder and run the following `pip install` command:
 
 ```cmd
-path\netmiko> pip install -r requirements.txt --user
+path_to\netmiko> pip install -r requirements.txt --user
 ```
 
 4. Open `netmiko` folder in VSCode and explore each `example*.py` file. _(where **\*** is the number of the example)_
