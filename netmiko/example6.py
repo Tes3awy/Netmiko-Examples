@@ -41,6 +41,7 @@ for key, value in headers2.items():
 # Define devices variable
 devices = []
 
+# Read a csv file
 with open("device_list.csv", mode="r") as csvfile:
     # Read devices from device_list.csv file
     device_list = csv.reader(csvfile, delimiter=",")
@@ -48,11 +49,11 @@ with open("device_list.csv", mode="r") as csvfile:
         # Append devices from csv file to devices variable
         devices.append(
             {
-                "device_type": "cisco_ios",
-                "ip": device[0],
-                "username": device[1],
-                "password": device[2],
-                "port": device[3],
+                "device_type": device[0],
+                "ip": device[1],
+                "username": device[2],
+                "password": device[3],
+                "port": device[4],
             }
         )
 
