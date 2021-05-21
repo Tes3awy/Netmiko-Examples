@@ -11,7 +11,7 @@ data = pd.read_excel("Example4-Inventory-Details.xlsx")
 df = pd.DataFrame(data)
 
 # Conevrt data frame from MGMT IP Address
-device_ip_list = df["MGMT IP Address"].tolist()
+device_ip_list = df.iloc[:, 1].tolist()
 
 # Define devices variable
 devices = []
