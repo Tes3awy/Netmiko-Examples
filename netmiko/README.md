@@ -26,6 +26,8 @@
 
 ## Example 6
 
+_Uses `device_list.csv` file_
+
 > Same as example 5, but adds two sheets from different outputs.
 
 ## Example 7
@@ -37,6 +39,8 @@ _Must run example4.py first_
 ## Example 8
 
 _Must run example4.py first_
+
+_Uses `config-sample-ex8.txt` file_
 
 > Shows how to read an Excel file, get values from a specific column, send same configuration to all devices, and export the new running config to text files.
 
