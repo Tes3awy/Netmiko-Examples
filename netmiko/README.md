@@ -1,4 +1,4 @@
-# Examples Explaination
+# Examples Explanation
 
 ## Example 0
 
