@@ -18,6 +18,6 @@ path_to\netmiko> pip install -r requirements.txt --user
 
 5. Run any Python example by writing the following command in CMD:
 
-```python
-python example*.py
+```cmd
+path_to\netmiko> python example*.py
 ```
