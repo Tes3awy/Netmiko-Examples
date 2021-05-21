@@ -19,11 +19,14 @@ devices = [
     },
 ]
 
+# The command to send
+command = "show version"
+
 # Loop over devices
 for device in devices:
     # Create a connection instance
     with ConnectHandler(**device) as net_connect:
-        output = net_connect.send_command("show version", use_textfsm=True)
+        output = net_connect.send_command(command, use_textfsm=True)
     print(output)
 
 print("Done")
