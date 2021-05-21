@@ -32,13 +32,13 @@ _Uses `device_list.csv` file_
 
 ## Example 7
 
-_Must run example4.py first_
+_Must run `example4.py` first_
 
 > Shows how to read an Excel file, get values from a specific column, and export running config to text files.
 
 ## Example 8
 
-_Must run example4.py first_
+_Must run `example4.py` first_
 
 _Uses `config-sample-ex8.txt` file_
 
@@ -56,9 +56,9 @@ _Uses `config-sample-ex8.txt` file_
 
 > **This is an advanced example**
 
-_Must run example4.py first_
+_Must run `example4.py` first_
 
-This bonus example does the following:
+This bonus example that does the following:
 
 1. Gets Up/Up interfaces for multiple Cisco switches. _(Routers won't work)_
 2. Applies `test cable-diagnostics tdr interface <up_up_interface_name>` command for all Up/Up interfaces.
