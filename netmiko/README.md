@@ -20,6 +20,10 @@
 
 > Shows how to create an Excel file and append needed data to.
 
+## Example 4-1
+
+> Same as example 4 with if condition for running mode.
+
 ## Example 5
 
 > Same as example 4, but adds data based on an if condition.
