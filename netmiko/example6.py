@@ -70,7 +70,7 @@ for device in devices:
     with ConnectHandler(**device) as net_connect:
         hostname = net_connect.send_command("show version", use_textfsm=True)[0][
             "hostname"
-        ]  # find hostname of current device (Another method)
+        ]  # hostname of current device
         inventory = net_connect.send_command("show inventory", use_textfsm=True)
         ip_int_brief = net_connect.send_command(
             "show ip interface brief", use_textfsm=True
@@ -91,7 +91,7 @@ for device in devices:
         worksheet2.write(row2, col2 + 2, value["ipaddr"])
         worksheet2.write(row2, col2 + 3, value["status"])
         worksheet2.write(row2, col2 + 4, value["proto"])
-
+        # Jump to next row
         row2 += 1
 
 

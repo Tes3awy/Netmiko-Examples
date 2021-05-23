@@ -11,7 +11,7 @@ worksheet = workbook.add_worksheet("Inventory Details")
 worksheet.autofilter("A1:K1")
 
 # Create Header cell for each entry
-headers = {
+header = {
     "A1": "Hostname",
     "B1": "MGMT IP Address",
     "C1": "Serial Number",
@@ -26,7 +26,7 @@ headers = {
 }
 
 # Loop over headers and create cells in first row (row 0)
-for key, value in headers.items():
+for key, value in header.items():
     worksheet.write(key, value)
 
 # Devices to SSH into
@@ -58,7 +58,7 @@ for device in devices:
         output = net_connect.send_command("show version", use_textfsm=True)
 
     # Loop over each value in output variable and insert each value
-    # in the corresponding cell according to the sheaders above
+    # in the corresponding cell according to the header above
     for value in output:
         worksheet.write(row, col, value["hostname"])
         worksheet.write(row, col + 1, device["ip"])  # use IP from device variable

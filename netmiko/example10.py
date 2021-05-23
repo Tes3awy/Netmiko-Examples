@@ -19,9 +19,8 @@ best_match = guesser.autodetect()
 # Override autodetect with the best match
 device["device_type"] = best_match
 
-net_connect = ConnectHandler(**device)
-output = net_connect.send_command("show version")
-net_connect.disconnect()
-
+with ConnectHandler(**device) as net_connect:
+    output = net_connect.send_command("show version")
 print(output)
+
 print("Done")

@@ -11,9 +11,9 @@ device = {
     "port": 22,
 }
 
-# Create an SSH connection instance
+# Create an SSH connection instance (Context Manager Method)
 with ConnectHandler(**device) as net_connect:
     output = net_connect.send_command("show version")
-
 print(output)
+
 print("Done")

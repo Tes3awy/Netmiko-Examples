@@ -45,7 +45,9 @@ col = 0
 for device in devices:
     # Create a connection instance
     with ConnectHandler(**device) as net_connect:
-        hostname = net_connect.find_prompt()[:-1]  # find hostname of current device
+        hostname = net_connect.send_command("show version", use_textfsm=True)[0][
+            "hostname"
+        ]  # hostname of the current device
         inventory = net_connect.send_command("show inventory", use_textfsm=True)
 
     # Pick only Chassis serial number

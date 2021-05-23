@@ -35,7 +35,9 @@ cfg_file = "config-sample-ex8.txt"
 for device in devices:
     # Create a connection instance
     with ConnectHandler(**device) as net_connect:
-        hostname = net_connect.find_prompt()[:-1]  # find hostname of current device
+        hostname = net_connect.send_command("show version", use_textfsm=True)[0][
+            "hostname"
+        ]  # hostname of the current device
         # Reads and sends commands in cfg_file to each device
         output = net_connect.send_config_from_file(cfg_file)
         # Saves config with write memory command

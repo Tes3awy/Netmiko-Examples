@@ -17,10 +17,12 @@ nxos_device = {
 
 # Create an SSH connection instance
 with ConnectHandler(**nxos_device) as net_connect:
-    output = net_connect.send_command("show version", use_textfsm=True)
+    hostname = net_connect.send_command("show version", use_textfsm=True)[0][
+        "hostname"
+    ]  # hostname of the current device
     running_config = net_connect.send_command("show running-config")
 
-with open(f"{output[0]['hostname']}-running_config.txt", "w") as outfile:
+with open(f"{hostname}-running_config.txt", "w") as outfile:
     outfile.write(running_config.strip())
 
 print("Done")

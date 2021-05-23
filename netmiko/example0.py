@@ -15,10 +15,10 @@ device = {
     "global_delay_factor": 2,  # Optional (Default to 1)
 }
 
-# Create an SSH connection instance
+# Create an SSH connection instance (Traditional Method)
 net_connect = ConnectHandler(**device)
 output = net_connect.send_command("show running-config")
 net_connect.disconnect()
-
 print(output)
+
 print("Done")

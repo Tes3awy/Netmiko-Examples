@@ -31,7 +31,9 @@ for ip in device_ip_list:
 for device in devices:
     # Create a connection instance
     with ConnectHandler(**device) as net_connect:
-        hostname = net_connect.find_prompt()[:-1]  # find hostname of current device
+        hostname = net_connect.send_command("show version", use_textfsm=True)[0][
+            "hostname"
+        ]  # hostname of the current device
         running_config = net_connect.send_command("show running-config")
 
     # Create .txt for each running configuration of each device
