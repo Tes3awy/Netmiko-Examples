@@ -37,7 +37,9 @@ for ip in device_ip_list:
 
 for device in devices:
     with ConnectHandler(**device) as net_connect:
-        hostname = net_connect.find_prompt()[:-1]  # find hostname of current device
+        hostname = net_connect.send_command("show version", use_textfsm=True)[0][
+            "hostname"
+        ]  # hostname of the current device
         output = net_connect.send_command(
             "show ip interface brief | include ^GigabitEthernet.*up.*up",
             use_textfsm=True,
