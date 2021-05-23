@@ -1,6 +1,6 @@
 # Netmiko Examples
 
-In `netmiko` folder, you will find 12 Python examples, one `.csv` file, one `.txt` file and a `requirements.txt`file.
+In `netmiko` folder, you will find 13 Python examples, one `.csv` file, one `.txt` file and a `requirements.txt`file.
 
 ## How to use?
 
