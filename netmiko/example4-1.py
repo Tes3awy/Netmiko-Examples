@@ -63,7 +63,10 @@ for device in devices:
         worksheet.write(row, col, value["hostname"])
         worksheet.write(row, col + 1, device["ip"])  # use IP from device variable
         worksheet.write(row, col + 2, value["serial"][0])
-        worksheet.write(row, col + 3, "Hidden")
+        try:
+            worksheet.write(row, col + 3, value["mac"][0])
+        except IndexError:
+            worksheet.write(row, col + 3, "Hidden")
         worksheet.write(row, col + 4, value["hardware"][0])
         worksheet.write(row, col + 5, value["version"])
         worksheet.write(row, col + 6, value["rommon"])
