@@ -95,3 +95,4 @@ Nexus
 *.txt
 !config-sample-ex8.txt
 !requirements.txt
+session
