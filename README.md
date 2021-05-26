@@ -1,8 +1,8 @@
 # Netmiko & Requests Examples for Cisco DevNet
 
-- In `netmiko` folder, you will find 13 Python examples, `device_list.csv` file, `config-sample-ex8.txt` file, and a `requirements.txt` file.
+- In `netmiko` folder, you will find 13 Python examples, `device_list.csv` file, `config-sample-ex8.txt` file, a `requirements.txt` file, and an explanation of each example.
 
-- In `requests` folder, you will find seven Python examples and a `requirements.txt` file.
+- In `requests` folder, you will find seven Python examples, a `requirements.txt` file, and an explanation of each example.
 
 ## How to use?
 

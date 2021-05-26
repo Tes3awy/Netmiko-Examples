@@ -1,5 +1,13 @@
 # Examples Explanation
 
+> If you don't have the `netmiko`, `xlsxwriter`, and `pandas` libraries installed on your PC, type:
+
+```powershell
+path_to\netmiko> pip install -r requirements.txt --user
+```
+
+> in VSCode terminal.
+
 ## Example 0
 
 > Shows how to initiate an SSH connection instance to a Cisco device and print its running configuration.
