@@ -2,4 +2,3 @@ pandas==1.2.4
 netmiko==3.4.0
 openpyxl==3.0.7
 XlsxWriter==1.4.3
-ntc_templates==2.0.0
