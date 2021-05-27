@@ -41,9 +41,9 @@ for key, value in headers2.items():
 # Define devices variable
 devices = []
 
-# Read a csv file
+# Read devices from device_list.csv file
 with open("device_list.csv", mode="r") as csvfile:
-    # Read devices from device_list.csv file
+    next(csvfile)  # Use next() to skip the header line
     device_list = csv.reader(csvfile, delimiter=",")
     for device in device_list:
         # Append devices from csv file to devices variable
