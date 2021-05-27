@@ -6,7 +6,7 @@
 
 ## How to use?
 
-1. `Clone` this repo or `Download ZIP` by clicking on ![Code Button](assets/code-button.png)
+1. `Clone` this repo or `Download ZIP` by clicking on <img src="assets/code-button.png" alt="Code Button" title="Button" width="100"/> up above.
 
 2. Once downloaded, extract the ZIP file and `cd` into `netmiko` folder or `requests` folder.
 
