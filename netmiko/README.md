@@ -36,6 +36,10 @@ path_to\netmiko> pip install -r requirements.txt --user
 
 > Same as example 4, but adds data based on an if condition.
 
+## Example 5-1
+
+> Same as example 4, but adds show cdp neighbors detail output in an Excel file
+
 ## Example 6
 
 _Uses `device_list.csv` file_
