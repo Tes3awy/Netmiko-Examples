@@ -33,14 +33,16 @@ for ip in device_ip_list:
 
 for device in devices:
     # Create a connection instance
-    with ConnectHandler(**device) as net_connect:
-        hostname = net_connect.send_command("show version", use_textfsm=True)[0][
-            "hostname"
-        ]  # hostname of the current device
-        running_config = net_connect.send_command("show running-config")
-
-    # Create .txt for each running configuration of each device
-    with open(f"{hostname}_ex7-running-config.txt", mode="w") as outfile:
-        outfile.write(running_config.strip())
+    try:
+        with ConnectHandler(**device) as net_connect:
+            hostname = net_connect.send_command("show version", use_textfsm=True)[0][
+                "hostname"
+            ]  # hostname of the current device
+            running_config = net_connect.send_command("show running-config")
+        # Create .txt for each running configuration of each device
+        with open(f"{hostname}_ex7-running-config.txt", mode="w") as outfile:
+            outfile.write(running_config.strip())
+    except Exception as ex:
+        raise SystemExit(ex)
 
 print("Done")
