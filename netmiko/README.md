@@ -56,6 +56,12 @@ _Must run `example4.py` first_
 
 > Shows how to read an Excel file, get values from a specific column, and export running config to text files.
 
+## Example 7-1
+
+_Must run `example4.py` first_
+
+> Same as example 7, but uses alternate method of reading IP Address column ONLY from the Excel file.
+
 ## Example 8
 
 _Must run `example4.py` first_
