@@ -6,6 +6,7 @@ import pandas as pd
 from netmiko import ConnectHandler
 
 # Read Excel file of .xlsx format
+# Read only column B
 data = pd.read_excel("Example4-Inventory-Details.xlsx", usecols="B")
 
 # Convert data to data frame
