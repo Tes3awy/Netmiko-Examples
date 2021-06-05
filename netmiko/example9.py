@@ -1,17 +1,17 @@
-# Create a Connection Instance Example
+# Create an SSH Connection Instance to a Nexus switch
 
 from netmiko import ConnectHandler
 
 # Define a device
 nxos_device = {
-    "device_type": "cisco_nxos",
+    "device_type": "cisco_nxos",  # for telnet use cisco_nxos_telnet
     "ip": "sbx-nxos-mgmt.cisco.com",
     "username": "admin",
     "password": "Admin_1234!",
     "secret": "",  # Optional (Enable secret)
     "port": 8181,  # Optional (Default to 22 for SSH)
     "verbose": True,  # Optional (Default False)
-    "session_log": "ex9-session.txt",  # Optional (No default value)
+    "session_log": "ex9-nxos-session.txt",  # Optional (No default value)
     "global_delay_factor": 2,  # Optional (Default to 1)
 }
 

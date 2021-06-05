@@ -1,6 +1,7 @@
 # Create an Excel sheet and save data from show version in
 
 import xlsxwriter
+
 from netmiko import ConnectHandler
 
 # Create an Excel file

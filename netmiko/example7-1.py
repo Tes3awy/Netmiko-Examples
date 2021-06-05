@@ -3,16 +3,17 @@
 # Alternate Solution for example 7
 
 import pandas as pd
+
 from netmiko import ConnectHandler
 
 # Read Excel file of .xlsx format
-# Read only column B
+# Read only column B (The MGMT IP Address column)
 data = pd.read_excel("Example4-Inventory-Details.xlsx", usecols="B")
 
 # Convert data to data frame
 df = pd.DataFrame(data)
 
-# # Conevrt data frame from MGMT IP Address
+# Conevrt data frame from MGMT IP Address to a list
 # Now column is 0 because it is the only column read in data variable
 device_ip_list = df.iloc[:, 0].tolist()
 
@@ -32,7 +33,7 @@ for ip in device_ip_list:
     )
 
 for device in devices:
-    # Create a connection instance
+    # Create a connection instance with try/except block to handle connection errors
     try:
         with ConnectHandler(**device) as net_connect:
             hostname = net_connect.send_command("show version", use_textfsm=True)[0][

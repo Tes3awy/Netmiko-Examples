@@ -1,14 +1,16 @@
 # Create two Excel sheets and save data with conditions from show inventory
 # and output from show ip interface brief
+# Read the device list from a CSV file (Comma Seperated Value file)
 
 import csv
 
 import xlsxwriter
+
 from netmiko import ConnectHandler
 
 # Create an Excel file
 workbook = xlsxwriter.Workbook("Example6-Inventory-CSV.xlsx")
-# Create an Excel sheets within the file
+# Create two Excel sheets within the file
 worksheet1 = workbook.add_worksheet("Inventory")
 worksheet2 = workbook.add_worksheet("ip interface brief output")
 # Filters
@@ -16,13 +18,13 @@ worksheet1.autofilter("A1:B1")
 worksheet2.autofilter("A1:E1")
 
 # Create Header cell for each entry in sheet 1
-headers1 = {
+header1 = {
     "A1": "Hostname",
     "B1": "Serial Number",
 }
 
 # Create Header cell for each entry in sheet 2
-headers2 = {
+header2 = {
     "A1": "Hostname",
     "B1": "Interface",
     "C1": "IP Address",
@@ -31,22 +33,23 @@ headers2 = {
 }
 
 # Headers for sheet 1
-for key, value in headers1.items():
+for key, value in header1.items():
     worksheet1.write(key, value)
 
 # Headers for sheet 2
-for key, value in headers2.items():
+for key, value in header2.items():
     worksheet2.write(key, value)
 
 # Define devices variable
 devices = []
 
-# Read devices from device_list.csv file
-with open("device_list.csv", mode="r") as csvfile:
-    next(csvfile)  # Use next() to skip the header line
+# Read devices from device_list.csv CSV file
+with open("device_list.csv", mode="r") as csvfile:  # notice mode is r: read
+    next(csvfile)  # Use next() function to skip the header line in the csv file
+    # Each value is seperated based on the comma (,)
     device_list = csv.reader(csvfile, delimiter=",")
     for device in device_list:
-        # Append devices from csv file to devices variable
+        # Append devices from the CSV file to devices variable
         devices.append(
             {
                 "device_type": device[0],

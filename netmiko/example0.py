@@ -18,7 +18,7 @@ device = {
 # Create an SSH connection instance (Traditional Method)
 net_connect = ConnectHandler(**device)
 output = net_connect.send_command("show running-config")
-net_connect.disconnect()
+net_connect.disconnect()  # Explicit call of disconnect function
 print(output)
 
 print("Done")

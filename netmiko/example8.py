@@ -2,6 +2,7 @@
 # Send new same configuration for each device and save the new running config
 
 import pandas as pd
+
 from netmiko import ConnectHandler
 
 # Read Excel file of .xlsx format

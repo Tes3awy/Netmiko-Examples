@@ -1,6 +1,7 @@
 # Create an Excel sheet and save data with conditions from show inventory in
 
 import xlsxwriter
+
 from netmiko import ConnectHandler
 
 # Create an Excel file
@@ -11,13 +12,13 @@ worksheet = workbook.add_worksheet("Inventory")
 worksheet.autofilter("A1:B1")
 
 # Create Header cell for each entry
-headers = {
+header = {
     "A1": "Hostname",
     "B1": "Serial Number",
 }
 
-# Loop over headers and create cells in first row (row 0)
-for key, value in headers.items():
+# Loop over header and create cells in first row (row 0)
+for key, value in header.items():
     worksheet.write(key, value)
 
 devices = [

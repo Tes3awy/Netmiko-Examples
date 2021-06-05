@@ -1,6 +1,7 @@
 # Create an Excel sheet with Context Manager and save data from show version in
 
 import xlsxwriter
+
 from netmiko import ConnectHandler
 
 # Devices to SSH into
@@ -63,13 +64,16 @@ with xlsxwriter.Workbook("Example4-2-Inventory-Details.xlsx") as workbook:
             worksheet.write(row, col + 0, value["hostname"])
             worksheet.write(row, col + 1, device["ip"])  # use IP from device variable
             worksheet.write(row, col + 2, value["serial"][0])
+            # Try/except block to handle IndexError
             try:
                 worksheet.write(row, col + 3, value["mac"][0])
             except IndexError:
-                worksheet.write(row, col + 3, "Hidden")
+                # if device is a CSR router, then it has no MAC Address
+                worksheet.write(row, col + 3, "N/A")
             worksheet.write(row, col + 4, value["hardware"][0])
             worksheet.write(row, col + 5, value["version"])
             worksheet.write(row, col + 6, value["rommon"])
+            # Checking if `bin` is in value["running_image"]
             if "bin" in value["running_image"]:
                 worksheet.write(row, col + 7, "BUNDLE")
             else:

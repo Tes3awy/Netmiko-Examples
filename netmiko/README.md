@@ -14,7 +14,7 @@ path_to\netmiko> pip install -r requirements.txt --user
 
 ## Example 1
 
-> Same as example 0, but with an improved method of initiating the SSH connection.
+> Same as example 0, but with an improved method (Context Manager) of initiating the SSH connection.
 
 ## Example 2
 

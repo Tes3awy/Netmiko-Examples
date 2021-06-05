@@ -2,6 +2,7 @@
 # Read an Excel sheet and save running config of devices using pandas
 
 import pandas as pd
+
 from netmiko import ConnectHandler
 
 # Read Excel file of .xlsx format
@@ -10,7 +11,7 @@ data = pd.read_excel("Example4-Inventory-Details.xlsx")
 # Convert data to data frame
 df = pd.DataFrame(data)
 
-# Conevrt data frame from MGMT IP Address
+# Conevrt data frame from MGMT IP Address to a list
 device_ip_list = df.iloc[:, 1].tolist()
 
 # Define devices variable

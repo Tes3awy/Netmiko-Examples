@@ -1,6 +1,7 @@
 # Create an Excel sheet and save data from show version in
 
 import xlsxwriter
+
 from netmiko import ConnectHandler
 
 # Create an Excel file
@@ -58,22 +59,25 @@ for device in devices:
         output = net_connect.send_command("show version", use_textfsm=True)
 
     # Loop over each value in output variable and insert each value
-    # in the corresponding cell according to the header above
+    # in the corresponding cell according to the header line above
     for value in output:
         worksheet.write(row, col, value["hostname"])
         worksheet.write(row, col + 1, device["ip"])  # use IP from device variable
         worksheet.write(row, col + 2, value["serial"][0])
+        # Try/except block to handle IndexError
         try:
             worksheet.write(row, col + 3, value["mac"][0])
         except IndexError:
-            worksheet.write(row, col + 3, "Hidden")
+            # if device is a CSR router, then it has no MAC Address
+            worksheet.write(row, col + 3, "N/A")
         worksheet.write(row, col + 4, value["hardware"][0])
         worksheet.write(row, col + 5, value["version"])
         worksheet.write(row, col + 6, value["rommon"])
+        # Checking if `packages` is in value["running_image"]
         if "packages" in value["running_image"]:
-            worksheet.write(row, col + 7, "INSTALL MODE")
+            worksheet.write(row, col + 7, "INSTALL")
         else:
-            worksheet.write(row, col + 7, "BUNDLE MODE")
+            worksheet.write(row, col + 7, "BUNDLE")
         worksheet.write(row, col + 8, value["reload_reason"])
         worksheet.write(row, col + 9, value["uptime"])
         worksheet.write(row, col + 10, value["config_register"])
