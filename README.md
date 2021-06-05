@@ -14,6 +14,7 @@
 ## How to use?
 
 1. `Clone` this repo or `Download ZIP` by clicking on <img src="assets/code-button.png" alt="Code Button" title="Button" width="100"/> up above.
+   _(Alternativley, you can click on Releases on the right hand side and download the latest release)_
 
 2. Once downloaded, extract the ZIP file and `cd` into `netmiko` folder or `requests` folder.
 
