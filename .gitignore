@@ -96,3 +96,4 @@ Nexus
 !config-sample-ex8.txt
 !requirements.txt
 session
+.pre-commit-config.yaml
