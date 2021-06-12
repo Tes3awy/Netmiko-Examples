@@ -18,10 +18,7 @@ worksheet1.autofilter("A1:B1")
 worksheet2.autofilter("A1:E1")
 
 # Create Header cell for each entry in sheet 1
-header1 = {
-    "A1": "Hostname",
-    "B1": "Serial Number",
-}
+header1 = {"A1": "Hostname", "B1": "Serial Number"}
 
 # Create Header cell for each entry in sheet 2
 header2 = {

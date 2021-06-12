@@ -12,10 +12,7 @@ worksheet = workbook.add_worksheet("Inventory")
 worksheet.autofilter("A1:B1")
 
 # Create Header cell for each entry
-header = {
-    "A1": "Hostname",
-    "B1": "Serial Number",
-}
+header = {"A1": "Hostname", "B1": "Serial Number"}
 
 # Loop over header and create cells in first row (row 0)
 for key, value in header.items():
