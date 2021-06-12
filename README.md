@@ -1,9 +1,11 @@
 ![Black](https://img.shields.io/badge/code%20style-black-000000.svg)
 ![Repo Size](https://img.shields.io/github/repo-size/Tes3awy/Netmiko-Examples)
-![Downloads](https://img.shields.io/github/downloads/Tes3awy/Netmiko-Examples/latest/total)
+![GitHub All Releases](https://img.shields.io/github/downloads/Tes3awy/Netmiko-Examples/total)
 ![License](https://img.shields.io/github/license/Tes3awy/Netmiko-Examples)
 ![Last Commit](https://img.shields.io/github/last-commit/Tes3awy/Netmiko-Examples)
 ![Release Date](https://img.shields.io/github/release-date/Tes3awy/Netmiko-Examples)
+![Discussions](https://img.shields.io/github/discussions/Tes3awy/Netmiko-Examples)
+![Contributors](https://img.shields.io/github/contributors/Tes3awy/Netmiko-Examples)
 
 # Netmiko & Requests Examples for Cisco DevNet
 
