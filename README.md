@@ -1,15 +1,17 @@
-![Black](https://img.shields.io/badge/code%20style-black-000000.svg)
+![Cisco DevNet](https://img.shields.io/badge/Cisco-DevNet-blue)
+[![Tested on Python 3.6+](https://img.shields.io/badge/Python%203.6+-blue.svg?logo=python&logoColor=white)](https://www.python.org/downloads)
+![Language](https://img.shields.io/github/languages/top/Tes3awy/Netmiko-Examples)
 ![Repo Size](https://img.shields.io/github/repo-size/Tes3awy/Netmiko-Examples)
-![GitHub All Releases](https://img.shields.io/github/downloads/Tes3awy/Netmiko-Examples/total)
-![License](https://img.shields.io/github/license/Tes3awy/Netmiko-Examples)
+[![Issues Open](https://img.shields.io/github/issues/Tes3awy/Netmiko-Examples)](https://github.com/Tes3awy/Netmiko-Examples/issues)
+![Releases Download](https://img.shields.io/github/downloads/Tes3awy/Netmiko-Examples/total)
+[![Commit Activity](https://img.shields.io/github/commit-activity/m/Tes3awy/Netmiko-Examples)](https://github.com/Tes3awy/Netmiko-Examples/commits/main)
 ![Last Commit](https://img.shields.io/github/last-commit/Tes3awy/Netmiko-Examples)
-![Release Date](https://img.shields.io/github/release-date/Tes3awy/Netmiko-Examples)
-![Discussions](https://img.shields.io/github/discussions/Tes3awy/Netmiko-Examples)
-![Contributors](https://img.shields.io/github/contributors/Tes3awy/Netmiko-Examples)
-
+[![Release Date](https://img.shields.io/github/release-date/Tes3awy/Netmiko-Examples)](https://github.com/Tes3awy/Netmiko-Examples/releases)
+[![License](https://img.shields.io/github/license/Tes3awy/Netmiko-Examples)](https://github.com/Tes3awy/Netmiko-Examples/blob/main/LICENSE)
+[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 # Netmiko & Requests Examples for Cisco DevNet
 
-- In `netmiko` folder, you will find 13 Python examples, `device_list.csv` file, `config-sample-ex8.txt` file, a `requirements.txt` file, and an explanation of each example.
+- In `netmiko` folder, you will find 18 Python examples, `device_list.csv` file, `config-sample-ex8.txt` file, a `requirements.txt` file, and an explanation of each example.
 
 - In `requests` folder, you will find seven Python examples, a `requirements.txt` file, and an explanation of each example.
 
@@ -25,7 +27,7 @@
 4. Open `requirements.txt` file and if any of the libraries is not installed on your PC, run the following command in the PowerShell terminal within VSCode:
 
 ```powershell
-path_to\folder> pip install -r requirements.txt --user
+path_to\folder> pip install -r requirements.txt --user ↵
 ```
 
 5. Explore each `example*.py` file. _**(where **\*** is the number of the example)**_
@@ -38,11 +40,11 @@ path_to\folder> python example*.py ↵
 
 ---
 
-## Used Libraries Documentation Links
+## Libraries Documentation Links
 
 Examples in `netmiko` and `requests` folder uses some Python libraries. These libraries are:
 
-1. Netmiko (Multi-vendor library to simplify Paramiko SSH connections to network devices). [Documentation Link](https://github.com/ktbyers/netmiko/blob/develop/README.md).
-2. XlsxWriter (XlsxWriter is a Python module for creating Excel XLSX files). [Documentation Link](https://xlsxwriter.readthedocs.io/)
-3. Pandas (Data Analysis Library). [Documentation Link](https://pandas.pydata.org/docs/)
-4. Requests (HTTP Requests). [Documentation Link](https://docs.python-requests.org/en/master/)
+1. Netmiko (Multi-vendor library to simplify Paramiko SSH connections to network devices) [Documentation Link](https://github.com/ktbyers/netmiko/blob/develop/README.md).
+2. XlsxWriter (XlsxWriter is a Python module for creating Excel XLSX files) [Documentation Link](https://xlsxwriter.readthedocs.io/).
+3. Pandas (Data Analysis Library) [Documentation Link](https://pandas.pydata.org/docs/).
+4. Requests (HTTP Requests) [Documentation Link](https://docs.python-requests.org/en/master/).
