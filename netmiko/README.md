@@ -54,6 +54,10 @@ _Uses `device_list.csv` file_
 
 > Same as example 5, but adds two sheets from different outputs.
 
+## Example 6-1
+
+> Shows how to grab `show ip interface brief` command output from multiple devices, and save data to separate sheets in an Excel file.
+
 ## Example 7
 
 _Must run `example4.py` first_
