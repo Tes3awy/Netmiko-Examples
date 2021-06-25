@@ -6,7 +6,7 @@ import pandas as pd
 from netmiko import ConnectHandler
 
 # Read Excel file of .xlsx format
-data = pd.read_excel("Example4-Inventory-Details.xlsx")
+data = pd.read_excel(io="Example4-Inventory-Details.xlsx", sheet_name=0)
 
 # Convert data to data frame
 df = pd.DataFrame(data)
@@ -32,13 +32,14 @@ for ip in device_ip_list:
 for device in devices:
     # Create a connection instance
     with ConnectHandler(**device) as net_connect:
-        hostname = net_connect.send_command("show version", use_textfsm=True)[0][
-            "hostname"
-        ]  # hostname of the current device
-        running_config = net_connect.send_command("show running-config")
+        # hostname of the current device
+        hostname = net_connect.send_command(
+            command_string="show version", use_textfsm=True
+        )[0]["hostname"]
+        run_cfg = net_connect.send_command(command_string="show running-config")
 
     # Create .txt for each running configuration of each device
-    with open(f"{hostname}_ex7-running-config.txt", mode="w") as outfile:
-        outfile.write(running_config.strip())
+    with open(file=f"{hostname}_ex7-run-cfg.txt", mode="w") as outfile:
+        outfile.write(run_cfg.lstrip())
 
 print("Done")

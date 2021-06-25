@@ -4,20 +4,6 @@ import xlsxwriter
 
 from netmiko import ConnectHandler
 
-# Create an Excel file
-workbook = xlsxwriter.Workbook("Example5-Inventory.xlsx")
-# Create an Excel sheet within the file
-worksheet = workbook.add_worksheet("Inventory")
-# Filters
-worksheet.autofilter("A1:B1")
-
-# Create Header cell for each entry
-header = {"A1": "Hostname", "B1": "Serial Number"}
-
-# Loop over header and create cells in first row (row 0)
-for key, value in header.items():
-    worksheet.write(key, value)
-
 devices = [
     {
         "device_type": "cisco_ios",
@@ -35,26 +21,43 @@ devices = [
     },
 ]
 
-# Starting values for row and column in the Excel workbook
-row = 1
-col = 0
+# Create an Excel file
+with xlsxwriter.Workbook(filename="Example5-Inventory.xlsx") as workbook:
+    # Create an Excel sheet within the file
+    worksheet = workbook.add_worksheet("Inventory")
 
-# Loop over devices
-for device in devices:
-    # Create a connection instance
-    with ConnectHandler(**device) as net_connect:
-        hostname = net_connect.send_command("show version", use_textfsm=True)[0][
-            "hostname"
-        ]  # hostname of the current device
-        inventory = net_connect.send_command("show inventory", use_textfsm=True)
+    worksheet.autofilter("A1:B1")
+    worksheet.freeze_panes(1, 1)
 
-    # Pick only Chassis serial number
-    for item in inventory:
-        if item["name"] == "Chassis":
-            worksheet.write(row, col, hostname)
-            worksheet.write(row, col + 1, item["sn"])
-            # Jump to next row
-            row += 1
+    # Create Header cell for each entry
+    header = {"A1": "Hostname", "B1": "Serial Number"}
 
-workbook.close()
+    # Loop over header and create cells in first row (row 0)
+    for cell, value in header.items():
+        worksheet.write(cell, value)
+
+    # Starting values for row and column in the Excel workbook
+    row = 1
+    col = 0
+
+    # Loop over devices
+    for device in devices:
+        # Create a connection instance
+        with ConnectHandler(**device) as net_connect:
+            # hostname of the current device
+            hostname = net_connect.send_command(
+                command_string="show version", use_textfsm=True
+            )[0]["hostname"]
+            inventory = net_connect.send_command(
+                command_string="show inventory", use_textfsm=True
+            )
+
+        # Pick only Chassis serial number
+        for item in inventory:
+            if item["name"] == "Chassis":
+                worksheet.write(row, col + 0, hostname)
+                worksheet.write(row, col + 1, item["sn"])
+                # Jump to next row
+                row += 1
+
 print("Done")

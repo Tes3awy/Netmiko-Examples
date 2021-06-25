@@ -34,7 +34,7 @@ cmd = "show version"
 for device in devices:
     # Create a connection instance to each device
     with ConnectHandler(**device) as net_connect:
-        result = net_connect.send_command(cmd, use_textfsm=True)
+        result = net_connect.send_command(command_string=cmd, use_textfsm=True)
     # Append the show command output to the `output` empty list
     output.append(result[0])
 
@@ -42,7 +42,7 @@ for device in devices:
 df = pd.DataFrame(output)
 
 # Name of exported excel file
-excel_file = "Example4-3-Inventory-Details-pd.xlsx"
+excel_file = "Example4-3-Inventory-Details-pandas.xlsx"
 
 # Export data to an Excel file using to_excel from Pandas
 df.to_excel(

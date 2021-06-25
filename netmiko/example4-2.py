@@ -23,11 +23,12 @@ devices = [
 ]
 
 # Create an Excel file
-with xlsxwriter.Workbook("Example4-2-Inventory-Details.xlsx") as workbook:
+with xlsxwriter.Workbook(filename="Example4-2-Inventory-Details.xlsx") as workbook:
     # Create an Excel sheet within the file
     worksheet = workbook.add_worksheet("Inventory Details")
-    # Filters
+
     worksheet.autofilter("A1:K1")
+    worksheet.freeze_panes(1, 1)
 
     # Create Header cell for each entry
     header = {
@@ -40,8 +41,9 @@ with xlsxwriter.Workbook("Example4-2-Inventory-Details.xlsx") as workbook:
         "G1": "SW Type",
         "H1": "Operation Mode",
         "I1": "Last Reload Reason",
-        "J1": "Device Up Time",
-        "K1": "Configuration Register",
+        "J1": "Restarted",
+        "K1": "Device Up Time",
+        "L1": "Configuration Register",
     }
 
     # Loop over headers and create cells in first row (row 0)
@@ -79,8 +81,9 @@ with xlsxwriter.Workbook("Example4-2-Inventory-Details.xlsx") as workbook:
             else:
                 worksheet.write(row, col + 7, "INSTALL")
             worksheet.write(row, col + 8, value["reload_reason"])
-            worksheet.write(row, col + 9, value["uptime"])
-            worksheet.write(row, col + 10, value["config_register"])
+            worksheet.write(row, col + 9, value["restarted"])
+            worksheet.write(row, col + 10, value["uptime"])
+            worksheet.write(row, col + 11, value["config_register"])
             # Jump to next row
             row += 1
 
