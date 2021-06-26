@@ -47,8 +47,8 @@ with xlsxwriter.Workbook(filename="Example4-2-Inventory-Details.xlsx") as workbo
     }
 
     # Loop over headers and create cells in first row (row 0)
-    for key, value in header.items():
-        worksheet.write(key, value)
+    for cell, value in header.items():
+        worksheet.write(cell, value)
 
     # Starting values for row and column in the Excel workbook
     row = 1
@@ -77,9 +77,9 @@ with xlsxwriter.Workbook(filename="Example4-2-Inventory-Details.xlsx") as workbo
             worksheet.write(row, col + 6, value["rommon"])
             # Checking if `bin` is in value["running_image"]
             if "bin" in value["running_image"]:
-                worksheet.write(row, col + 7, "BUNDLE")
+                worksheet.write(row, col + 7, "Bundle")
             else:
-                worksheet.write(row, col + 7, "INSTALL")
+                worksheet.write(row, col + 7, "Install")
             worksheet.write(row, col + 8, value["reload_reason"])
             worksheet.write(row, col + 9, value["restarted"])
             worksheet.write(row, col + 10, value["uptime"])

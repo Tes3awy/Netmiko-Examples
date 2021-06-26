@@ -23,9 +23,9 @@ devices = [
     },
 ]
 
-id = 0  # ID to differentiate devices of same hostname
 # Create an Excel file
 with xlsxwriter.Workbook(filename="Example6-1-IP-Interface-Brief.xlsx") as workbook:
+    id = 0  # ID to differentiate devices of same hostname
     # Iterate over devices
     for device in devices:
         # Create a connection instance to each device
@@ -36,7 +36,9 @@ with xlsxwriter.Workbook(filename="Example6-1-IP-Interface-Brief.xlsx") as workb
                 command_string="show version", use_textfsm=True
             )[0]["hostname"]
             output = net_connect.send_command(
-                command_string="show ip interface brief", use_textfsm=True
+                command_string="show ip interface brief",
+                use_textfsm=True,
+                delay_factor=2,
             )
 
         # Increment ID

@@ -76,10 +76,10 @@ for device in devices:
             command_string="show version", use_textfsm=True
         )[0]["hostname"]
         inventory = net_connect.send_command(
-            command_string="show inventory", use_textfsm=True
+            command_string="show inventory", use_textfsm=True, delay_factor=3
         )
         ip_int_brief = net_connect.send_command(
-            command_string="show ip interface brief", use_textfsm=True
+            command_string="show ip interface brief", use_textfsm=True, delay_factor=3
         )
 
     # Pick only "Chassis" serial number and save in sheet 1

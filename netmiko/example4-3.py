@@ -39,7 +39,39 @@ for device in devices:
     output.append(result[0])
 
 # Create a data frame from the ouput list
-df = pd.DataFrame(output)
+df = (
+    pd.DataFrame(output)
+    .reindex(
+        columns=[
+            "hostname",
+            "serial",
+            "mac",
+            "hardware",
+            "rommon",
+            "version",
+            "running_image",
+            "reload_reason",
+            "restarted",
+            "uptime",
+            "config_register",
+        ]
+    )
+    .rename(
+        columns={
+            "hostname": "Hostname",
+            "serial": "Serial Number",
+            "mac": "MAC Address",
+            "hardware": "Device Model",
+            "rommon": "Software Type",
+            "version": "Software Version",
+            "running_image": "Running Image",
+            "reload_reason": "Last Reload Reason",
+            "restarted": "Restarted",
+            "uptime": "Device Uptime",
+            "config_register": "Configuration Register",
+        }
+    )
+)
 
 # Name of exported excel file
 excel_file = "Example4-3-Inventory-Details-pandas.xlsx"
