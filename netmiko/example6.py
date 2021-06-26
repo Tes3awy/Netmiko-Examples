@@ -9,13 +9,16 @@ import xlsxwriter
 from netmiko import ConnectHandler
 
 # Create an Excel file
-workbook = xlsxwriter.Workbook("Example6-Inventory-CSV.xlsx")
+workbook = xlsxwriter.Workbook(filename="Example6-Inventory-CSV.xlsx")
 # Create two Excel sheets within the file
 worksheet1 = workbook.add_worksheet("Inventory")
 worksheet2 = workbook.add_worksheet("ip interface brief output")
-# Filters
+
 worksheet1.autofilter("A1:B1")
 worksheet2.autofilter("A1:E1")
+
+worksheet1.freeze_panes(1, 1)
+worksheet2.freeze_panes(1, 1)
 
 # Create Header cell for each entry in sheet 1
 header1 = {"A1": "Hostname", "B1": "Serial Number"}
@@ -30,21 +33,21 @@ header2 = {
 }
 
 # Headers for sheet 1
-for key, value in header1.items():
-    worksheet1.write(key, value)
+for cell, value in header1.items():
+    worksheet1.write(cell, value)
 
 # Headers for sheet 2
-for key, value in header2.items():
-    worksheet2.write(key, value)
+for cell, value in header2.items():
+    worksheet2.write(cell, value)
 
 # Define devices variable
 devices = []
 
 # Read devices from device_list.csv CSV file
-with open("device_list.csv", mode="r") as csvfile:  # notice mode is r: read
+with open(file="device_list.csv", mode="r") as csvfile:  # notice mode is r: read
     next(csvfile)  # Use next() function to skip the header line in the csv file
-    # Each value is seperated based on the comma (,)
-    device_list = csv.reader(csvfile, delimiter=",")
+    # Each value is seperated based on the delimiter (comma (,))
+    device_list = csv.reader(csvfile, dialect="excel", delimiter=",")
     for device in device_list:
         # Append devices from the CSV file to devices variable
         devices.append(
@@ -68,25 +71,28 @@ col2 = 0
 for device in devices:
     # Create a connection instance
     with ConnectHandler(**device) as net_connect:
-        hostname = net_connect.send_command("show version", use_textfsm=True)[0][
-            "hostname"
-        ]  # hostname of current device
-        inventory = net_connect.send_command("show inventory", use_textfsm=True)
+        # hostname of current device
+        hostname = net_connect.send_command(
+            command_string="show version", use_textfsm=True
+        )[0]["hostname"]
+        inventory = net_connect.send_command(
+            command_string="show inventory", use_textfsm=True, delay_factor=3
+        )
         ip_int_brief = net_connect.send_command(
-            "show ip interface brief", use_textfsm=True
+            command_string="show ip interface brief", use_textfsm=True, delay_factor=3
         )
 
     # Pick only "Chassis" serial number and save in sheet 1
     for item in inventory:
         if item["name"] == "Chassis":
-            worksheet1.write(row1, col1, hostname)
+            worksheet1.write(row1, col1 + 0, hostname)
             worksheet1.write(row1, col1 + 1, item["sn"])
             # Jump to next row
             row1 += 1
 
     # Pick show ip interface brief output and save in sheet 2
     for value in ip_int_brief:
-        worksheet2.write(row2, col2, hostname)
+        worksheet2.write(row2, col2 + 0, hostname)
         worksheet2.write(row2, col2 + 1, value["intf"])
         worksheet2.write(row2, col2 + 2, value["ipaddr"])
         worksheet2.write(row2, col2 + 3, value["status"])

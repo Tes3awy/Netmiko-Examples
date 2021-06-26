@@ -15,7 +15,7 @@ device = {
 # Create an SSH connection instance (Context Manager Method)
 # Context manager handles connection and disconnection from the device
 with ConnectHandler(**device) as net_connect:
-    output = net_connect.send_command("show version")
+    output = net_connect.send_command(command_string="show version")
 # Notice no explicit call of disconnect function
 # Check ex1-session-log.txt and you will find that the last line is exit which
 # means connection instance is terminated (disconnected) successfully

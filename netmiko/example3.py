@@ -23,13 +23,14 @@ devices = [
 for device in devices:
     # Create a connection instance
     with ConnectHandler(**device) as net_connect:
-        hostname = net_connect.send_command("show version", use_textfsm=True)[0][
-            "hostname"
-        ]  # hostname of the current device
-        running_config = net_connect.send_command("show running-config")
+        # hostname of the current device
+        hostname = net_connect.send_command(
+            command_string="show version", use_textfsm=True
+        )[0]["hostname"]
+        run_cfg = net_connect.send_command(command_string="show running-config")
 
     # Create files with device hostnames and save show running-config output to
-    with open(f"{hostname}_ex3-running-config.txt", mode="w") as outfile:
-        outfile.write(running_config.strip())
+    with open(file=f"{hostname}_ex3-run-cfg.txt", mode="w") as outfile:
+        outfile.write(run_cfg.lstrip())
 
 print("Done")

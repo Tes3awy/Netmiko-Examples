@@ -42,11 +42,11 @@ path_to\netmiko> pip install -r requirements.txt --user
 
 ## Example 5
 
-> Same as example 4, but adds data based on an if condition.
+> Same as example 4, but adds data from `show inventory` command.
 
 ## Example 5-1
 
-> Same as example 4, but adds show cdp neighbors detail output in an Excel file
+> Same as example 4, but adds `show cdp neighbors detail` command output in an Excel file.
 
 ## Example 6
 

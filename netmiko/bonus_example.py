@@ -10,7 +10,7 @@ import pandas as pd
 from netmiko import ConnectHandler
 
 # Read Excel file of .xlsx format
-data = pd.read_excel("Example4-Inventory-Details.xlsx")
+data = pd.read_excel(io="Example4-Inventory-Details.xlsx", sheet_name=0)
 
 # Convert data to data frame
 df = pd.DataFrame(data)
@@ -37,17 +37,18 @@ for ip in device_ip_list:
 
 for device in devices:
     with ConnectHandler(**device) as net_connect:
-        hostname = net_connect.send_command("show version", use_textfsm=True)[0][
-            "hostname"
-        ]  # hostname of the current device
+        # hostname of the current device
+        hostname = net_connect.send_command(
+            command_string="show version", use_textfsm=True
+        )[0]["hostname"]
         output = net_connect.send_command(
-            "show ip interface brief | include ^GigabitEthernet.*up.*up",
+            command_string="show ip interface brief | include ^GigabitEthernet.*up.*up",
             use_textfsm=True,
         )
 
         for up_port in output:
             net_connect.send_command(
-                f'test cable-diagnostics tdr interface {up_port["intf"]}'
+                command_string=f'test cable-diagnostics tdr interface {up_port["intf"]}'
             )
 
         # test cable-diagnostics command takes about 5 to 7 seconds to evaluate
@@ -55,10 +56,10 @@ for device in devices:
         time.sleep(8 * len(output))
 
         # Create a text file
-        outfile = open(f"{hostname}-test-cable-diagnostics-result.txt", mode="w")
+        outfile = open(file=f"{hostname}-test-cable-diagnostics-result.txt", mode="w")
         for up_port in output:
             test_output = net_connect.send_command(
-                f'show cable-diagnostics tdr interface {up_port["intf"]}'
+                command_string=f'show cable-diagnostics tdr interface {up_port["intf"]}'
             )
             # Write result of each interface in the text file
             outfile.write(f"{test_output}\n")

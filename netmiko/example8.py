@@ -6,7 +6,7 @@ import pandas as pd
 from netmiko import ConnectHandler
 
 # Read Excel file of .xlsx format
-data = pd.read_excel("Example4-Inventory-Details.xlsx")
+data = pd.read_excel(io="Example4-Inventory-Details.xlsx", sheet_name=0)
 
 # Convert data to data frame
 df = pd.DataFrame(data)
@@ -36,18 +36,19 @@ cfg_file = "config-sample-ex8.txt"
 for device in devices:
     # Create a connection instance
     with ConnectHandler(**device) as net_connect:
-        hostname = net_connect.send_command("show version", use_textfsm=True)[0][
-            "hostname"
-        ]  # hostname of the current device
+        # hostname of the current device
+        hostname = net_connect.send_command(
+            command_string="show version", use_textfsm=True
+        )[0]["hostname"]
         # Reads and sends commands in cfg_file to each device
-        output = net_connect.send_config_from_file(cfg_file)
+        output = net_connect.send_config_from_file(config_file=cfg_file)
         # Saves config with write memory command
         output += net_connect.save_config()
 
-        running_config = net_connect.send_command("show running-config")
+        run_cfg = net_connect.send_command(command_string="show running-config")
 
     # Create .txt for each running configuration of each device
-    with open(f"{hostname}_ex8-running-config.txt", mode="w") as outfile:
-        outfile.write(running_config.strip())
+    with open(file=f"{hostname}_ex8-run-cfg.txt", mode="w") as outfile:
+        outfile.write(run_cfg.lstrip())
 
 print("Done")

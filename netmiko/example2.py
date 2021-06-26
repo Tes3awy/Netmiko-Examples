@@ -1,5 +1,7 @@
 # For Loop Example
 
+from pprint import pprint
+
 from netmiko import ConnectHandler
 
 devices = [
@@ -26,7 +28,7 @@ command = "show version"
 for device in devices:
     # Create a connection instance
     with ConnectHandler(**device) as net_connect:
-        output = net_connect.send_command(command, use_textfsm=True)
-    print(output)
+        output = net_connect.send_command(command_string=command, use_textfsm=True)
+    pprint(output)
 
 print("Done")
