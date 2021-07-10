@@ -4,7 +4,7 @@ from netmiko import ConnectHandler
 
 # Define a device
 nxos_device = {
-    "device_type": "cisco_nxos",  # for telnet use cisco_nxos_telnet
+    "device_type": "cisco_nxos",  # No telnet option for NXOS
     "ip": "sbx-nxos-mgmt.cisco.com",
     "username": "admin",
     "password": "Admin_1234!",

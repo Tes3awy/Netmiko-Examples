@@ -39,6 +39,7 @@ with xlsxwriter.Workbook(filename="Example5-Show-Inventory.xlsx") as workbook:
         # Create worksheet by hostname of each device
         worksheet = workbook.add_worksheet(f"{hostname} Inventory")
 
+        # Worksheet customizations
         worksheet.autofilter("A1:D1")
         worksheet.freeze_panes(1, 1)
 
@@ -55,14 +56,13 @@ with xlsxwriter.Workbook(filename="Example5-Show-Inventory.xlsx") as workbook:
             worksheet.write(cell, value)
 
         # Starting values for row and column in the Excel workbook
-        row = 1
-        col = 0
+        row, col = 1, 0
 
-        for item in inventory:
-            worksheet.write(row, col + 0, item["name"])
-            worksheet.write(row, col + 1, item["sn"])
-            worksheet.write(row, col + 2, item["pid"])
-            worksheet.write(row, col + 3, item["descr"])
+        for module in inventory:
+            worksheet.write(row, col + 0, module["name"])
+            worksheet.write(row, col + 1, module["sn"])
+            worksheet.write(row, col + 2, module["pid"])
+            worksheet.write(row, col + 3, module["descr"])
             # Jump to next row
             row += 1
 

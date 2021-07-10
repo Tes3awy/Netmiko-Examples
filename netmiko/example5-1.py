@@ -26,8 +26,7 @@ devices = [
 # Create an Excel file
 with xlsxwriter.Workbook(filename="Example5-1-CDP-Neighbors-Details.xlsx") as workbook:
     # Starting values for row and col in the Excel workbook
-    row = 1
-    col = 0
+    row, col = 1, 0
 
     # Loop over devices
     for device in devices:
@@ -46,6 +45,7 @@ with xlsxwriter.Workbook(filename="Example5-1-CDP-Neighbors-Details.xlsx") as wo
         # Create a sheet for each device
         worksheet = workbook.add_worksheet(f"{hostname} Neighbors")
 
+        # Worksheet customizations
         worksheet.autofilter("A1:H1")
         worksheet.freeze_panes(1, 1)
 

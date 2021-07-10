@@ -3,7 +3,7 @@
 from pprint import pprint
 
 import requests
-from requests.auth import HTTPBasicAuth
+from requests.auth import HTTPBasicAuth as BasicAuth
 from requests.packages import urllib3
 
 # To disable SSL warning when VERIFY is equal to False
@@ -27,7 +27,7 @@ try:
     token_response = requests.post(
         url=f"{BASE_URL}/dna/system/api/v1/auth/token",
         headers=headers,
-        auth=HTTPBasicAuth(USERNAME, PASSWORD),
+        auth=BasicAuth(USERNAME, PASSWORD),
         verify=VERIFY,
     )
     token_response.raise_for_status()

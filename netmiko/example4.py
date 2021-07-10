@@ -58,13 +58,13 @@ col = 0
 for device in devices:
     # Create a connection instance
     with ConnectHandler(**device) as net_connect:
-        output = net_connect.send_command(
+        facts = net_connect.send_command(
             command_string="show version", use_textfsm=True
         )
 
-    # Loop over each value in output variable and insert each value
+    # Loop over each value in facts variable and insert each value
     # in the corresponding cell according to the header above
-    for value in output:
+    for value in facts:
         worksheet.write(row, col + 0, value["hostname"])
         worksheet.write(row, col + 1, device["ip"])  # use IP from device variable
         worksheet.write(row, col + 2, value["serial"][0])

@@ -1,7 +1,7 @@
 # Cisco DNA Center AO 1.3.1.4
 
 import requests
-from requests.auth import HTTPBasicAuth
+from requests.auth import HTTPBasicAuth as BasicAuth
 
 # CONSTANTS
 BASE_URL = "https://sandboxdnac2.cisco.com"
@@ -16,7 +16,7 @@ headers = {"Content-Type": "application/json", "Accept": "application/json"}
 r = requests.post(
     url=f"{BASE_URL}/dna/system/api/v1/auth/token",
     headers=headers,
-    auth=HTTPBasicAuth(USERNAME, PASSWORD),
+    auth=BasicAuth(USERNAME, PASSWORD),
     verify=VERIFY,
 )
 

@@ -51,5 +51,5 @@ devices_response = requests.get(
 devices = devices_response.json()["response"]
 
 # Save network-device response to a JSON file (For ease of reading the output)
-with open("network-devices.json", "w") as outfile:
-    json.dump(devices, outfile, indent=4, sort_keys=True)
+with open(file="network-devices.json", mode="w") as outfile:
+    json.dump(obj=devices, fp=outfile, indent=4, sort_keys=True)

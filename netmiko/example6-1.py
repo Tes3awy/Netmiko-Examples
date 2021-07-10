@@ -47,6 +47,7 @@ with xlsxwriter.Workbook(filename="Example6-1-IP-Interface-Brief.xlsx") as workb
         # Add worksheet with hostname of the device-ID
         worksheet = workbook.add_worksheet(f"{hostname}-{id}")
 
+        # Worksheet customizations
         worksheet.autofilter("A1:D1")
         worksheet.freeze_panes(1, 1)
 
@@ -62,8 +63,7 @@ with xlsxwriter.Workbook(filename="Example6-1-IP-Interface-Brief.xlsx") as workb
             worksheet.write(cell, value)
 
         # Initial values for row and col
-        row = 1
-        col = 0
+        row, col = 1, 0
 
         # Get intf values from output
         for intf in output:

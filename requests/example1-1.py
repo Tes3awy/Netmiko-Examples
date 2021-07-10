@@ -2,7 +2,7 @@
 # POST: Generate Auth Token
 
 import requests
-from requests.auth import HTTPBasicAuth
+from requests.auth import HTTPBasicAuth as BasicAuth
 
 # CONSTNATS
 BASE_URL = "https://sandboxdnac2.cisco.com"
@@ -21,7 +21,7 @@ try:
     r = requests.post(
         url=f"{BASE_URL}/dna/system/api/v1/auth/token",
         headers=headers,
-        auth=HTTPBasicAuth(USERNAME, PASSWORD),
+        auth=BasicAuth(USERNAME, PASSWORD),
         verify=VERIFY,
     )
     r.raise_for_status()

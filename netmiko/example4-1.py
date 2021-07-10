@@ -51,41 +51,43 @@ with xlsxwriter.Workbook(filename="Example4-1-Inventory-Details.xlsx") as workbo
         worksheet.write(cell, value)
 
     # Starting values for row and column in the Excel workbook
-    row = 1
-    col = 0
+    row, col = 1, 0
+    # OR
+    # row = 1
+    # col = 0
 
     # Loop over devices
     for device in devices:
         # Create a connection instance
         with ConnectHandler(**device) as net_connect:
-            output = net_connect.send_command(
+            facts = net_connect.send_command(
                 command_string="show version", use_textfsm=True
             )
 
-        # Loop over each value in output variable and insert each value
+        # Loop over each value in facts variable and insert each value
         # in the corresponding cell according to the header line above
-        for value in output:
-            worksheet.write(row, col + 0, value["hostname"])
+        for fact in facts:
+            worksheet.write(row, col + 0, fact["hostname"])
             worksheet.write(row, col + 1, device["ip"])  # use IP from device variable
-            worksheet.write(row, col + 2, value["serial"][0])
+            worksheet.write(row, col + 2, fact["serial"][0])
             # Try/except block to handle IndexError
             try:
-                worksheet.write(row, col + 3, value["mac"][0])
+                worksheet.write(row, col + 3, fact["mac"][0])
             except IndexError:
                 # if device is a CSR router, then it has no MAC Address
                 worksheet.write(row, col + 3, "N/A")
-            worksheet.write(row, col + 4, value["hardware"][0])
-            worksheet.write(row, col + 5, value["version"])
-            worksheet.write(row, col + 6, value["rommon"])
-            # Checking if `packages` is in value["running_image"]
-            if "packages" in value["running_image"]:
+            worksheet.write(row, col + 4, fact["hardware"][0])
+            worksheet.write(row, col + 5, fact["version"])
+            worksheet.write(row, col + 6, fact["rommon"])
+            # Checking if `packages` is in fact["running_image"]
+            if "packages" in fact["running_image"]:
                 worksheet.write(row, col + 7, "Install")
             else:
                 worksheet.write(row, col + 7, "Bundle")
-            worksheet.write(row, col + 8, value["reload_reason"])
-            worksheet.write(row, col + 9, value["restarted"])
-            worksheet.write(row, col + 10, value["uptime"])
-            worksheet.write(row, col + 11, value["config_register"])
+            worksheet.write(row, col + 8, fact["reload_reason"])
+            worksheet.write(row, col + 9, fact["restarted"])
+            worksheet.write(row, col + 10, fact["uptime"])
+            worksheet.write(row, col + 11, fact["config_register"])
             # Jump to next row
             row += 1
 

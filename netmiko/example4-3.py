@@ -34,9 +34,9 @@ cmd = "show version"
 for device in devices:
     # Create a connection instance to each device
     with ConnectHandler(**device) as net_connect:
-        result = net_connect.send_command(command_string=cmd, use_textfsm=True)
+        facts = net_connect.send_command(command_string=cmd, use_textfsm=True)
     # Append the show command output to the `output` empty list
-    output.append(result[0])
+    output.append(facts[0])
 
 # Create a data frame from the ouput list
 df = (

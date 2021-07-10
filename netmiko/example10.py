@@ -23,7 +23,7 @@ device["device_type"] = best_match
 
 # Create an SSH connection instance
 with ConnectHandler(**device) as net_connect:
-    output = net_connect.send_command(command_sting="show version", use_textfsm=True)
-pprint(output)
+    facts = net_connect.send_command(command_sting="show version", use_textfsm=True)
+pprint(facts)
 
 print("Done")

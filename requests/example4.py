@@ -5,7 +5,7 @@ from datetime import datetime
 import xlsxwriter
 
 import requests
-from requests.auth import HTTPBasicAuth
+from requests.auth import HTTPBasicAuth as BasicAuth
 
 # CONSTANTS
 BASE_URL = "https://sandboxdnac2.cisco.com"
@@ -24,7 +24,7 @@ try:
     token_response = requests.post(
         url=f"{BASE_URL}/dna/system/api/v1/auth/token",  # Using formatted string "f"
         headers=headers,
-        auth=HTTPBasicAuth(USERNAME, PASSWORD),
+        auth=BasicAuth(USERNAME, PASSWORD),
         verify=VERIFY,
     )
     token_response.raise_for_status()
@@ -33,6 +33,8 @@ except Exception as ex:
 
 # Output 1
 token = token_response.json()["Token"]
+
+# -------------------------------------
 
 # Inputs 2
 headers_2 = {
@@ -49,51 +51,48 @@ devices_response = requests.get(
 
 # Output 2
 devices = devices_response.json()["response"]  # Devices list of dicts
-workbook = xlsxwriter.Workbook("DNAC-Device-List.xlsx")  # Create an Excel file
-# Create a sheet in the Excel file
-worksheet = workbook.add_worksheet("DNAC Device List")
+with xlsxwriter.Workbook("DNAC-Device-List.xlsx") as workbook:  # Create an Excel file
+    # Create a sheet in the Excel file
+    worksheet = workbook.add_worksheet("DNAC Device List")
 
-# Header row in Excel file
-header = {
-    "A1": "Hostname",
-    "B1": "MGMT IP Address",
-    "C1": "Serial Number",
-    "D1": "MAC Address",
-    "E1": "Device Model",
-    "F1": "SW Version",
-    "G1": "Role",
-    "H1": "Uptime",
-    "I1": "Last Update",
-    "J1": "Reachability Status",
-}
+    # Header row in Excel file
+    header = {
+        "A1": "Hostname",
+        "B1": "MGMT IP Address",
+        "C1": "Serial Number",
+        "D1": "MAC Address",
+        "E1": "Device Model",
+        "F1": "SW Version",
+        "G1": "Role",
+        "H1": "Uptime",
+        "I1": "Last Update",
+        "J1": "Reachability Status",
+    }
 
-for key, value in header.items():
-    worksheet.write(key, value)
+    for key, value in header.items():
+        worksheet.write(key, value)
 
-# Staring values for row and col
-row = 1
-col = 0
+    # Staring values for row and col
+    row, col = 1, 0
 
-# Grab data from each device into Excel file
-for device in devices:
-    worksheet.write(row, col, device["hostname"])
-    worksheet.write(row, col + 1, device["managementIpAddress"])
-    worksheet.write(row, col + 2, device["serialNumber"])
-    worksheet.write(row, col + 3, device["macAddress"])
-    worksheet.write(row, col + 4, device["platformId"])
-    worksheet.write(row, col + 5, device["softwareVersion"])
-    worksheet.write(row, col + 6, device["role"])
-    worksheet.write(row, col + 7, device["upTime"])
-    # lastUpdateTime comes in milliseconds (Removing the milliseconds)
-    epoch_time = str(device["lastUpdateTime"])[:-3]
-    # Converting timestamp to human readable format
-    last_updated = datetime.fromtimestamp(int(epoch_time))
-    worksheet.write(row, col + 8, last_updated)
-    worksheet.write(row, col + 9, device["reachabilityStatus"])
+    # Grab data from each device into Excel file
+    for device in devices:
+        worksheet.write(row, col + 0, device["hostname"])
+        worksheet.write(row, col + 1, device["managementIpAddress"])
+        worksheet.write(row, col + 2, device["serialNumber"])
+        worksheet.write(row, col + 3, device["macAddress"])
+        worksheet.write(row, col + 4, device["platformId"])
+        worksheet.write(row, col + 5, device["softwareVersion"])
+        worksheet.write(row, col + 6, device["role"])
+        worksheet.write(row, col + 7, device["upTime"])
+        # lastUpdateTime comes in milliseconds (Removing the milliseconds)
+        epoch_time = str(device["lastUpdateTime"])[:-3]
+        # Converting timestamp to human readable format
+        last_updated = datetime.fromtimestamp(int(epoch_time))
+        worksheet.write(row, col + 8, last_updated.strftime("%Y-%m-%d %H:%M:%S"))
+        worksheet.write(row, col + 9, device["reachabilityStatus"])
 
-    # Jump to next row
-    row += 1
+        # Jump to next row
+        row += 1
 
-# Close the Excel file
-workbook.close()
 print("Done")

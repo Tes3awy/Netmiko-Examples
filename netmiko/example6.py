@@ -61,11 +61,10 @@ with open(file="device_list.csv", mode="r") as csvfile:  # notice mode is r: rea
         )
 
 # Starting values for row and column in the Excel sheets
-row1 = 1
-col1 = 0
+# sheet 1
+row1, col1 = 1, 0
 # sheet 2
-row2 = 1
-col2 = 0
+row2, col2 = 1, 0
 
 # Loop over devices
 for device in devices:
@@ -78,20 +77,20 @@ for device in devices:
         inventory = net_connect.send_command(
             command_string="show inventory", use_textfsm=True, delay_factor=3
         )
-        ip_int_brief = net_connect.send_command(
+        intf_brief = net_connect.send_command(
             command_string="show ip interface brief", use_textfsm=True, delay_factor=3
         )
 
     # Pick only "Chassis" serial number and save in sheet 1
-    for item in inventory:
-        if item["name"] == "Chassis":
+    for module in inventory:
+        if module["name"] == "Chassis":
             worksheet1.write(row1, col1 + 0, hostname)
-            worksheet1.write(row1, col1 + 1, item["sn"])
+            worksheet1.write(row1, col1 + 1, module["sn"])
             # Jump to next row
             row1 += 1
 
     # Pick show ip interface brief output and save in sheet 2
-    for value in ip_int_brief:
+    for value in intf_brief:
         worksheet2.write(row2, col2 + 0, hostname)
         worksheet2.write(row2, col2 + 1, value["intf"])
         worksheet2.write(row2, col2 + 2, value["ipaddr"])

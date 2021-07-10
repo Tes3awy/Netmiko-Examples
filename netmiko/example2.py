@@ -28,7 +28,7 @@ command = "show version"
 for device in devices:
     # Create a connection instance
     with ConnectHandler(**device) as net_connect:
-        output = net_connect.send_command(command_string=command, use_textfsm=True)
-    pprint(output)
+        facts = net_connect.send_command(command_string=command, use_textfsm=True)
+    pprint(facts)
 
 print("Done")

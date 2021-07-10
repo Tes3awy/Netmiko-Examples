@@ -44,7 +44,7 @@ for device in devices:
         # Create .txt for each running configuration of each device
         with open(file=f"{hostname}_ex7-run-cfg.txt", mode="w") as outfile:
             outfile.write(run_cfg.lstrip())
-    except Exception as ex:
+    except Exception as ex:  # Handle any exception
         raise SystemExit(ex)
 
 print("Done")
