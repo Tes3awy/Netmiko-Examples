@@ -9,7 +9,7 @@ device = {
     "username": "developer",
     "password": "C1sco12345",
     "session_log": "ex1-session-log.txt",
-    "port": 22,
+    "port": 23,
 }
 
 # Create an SSH connection instance (Context Manager Method)
