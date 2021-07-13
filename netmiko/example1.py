@@ -10,6 +10,7 @@ device = {
     "password": "C1sco12345",
     "session_log": "ex1-session-log.txt",
     "port": 22,
+    "verbose": True,
 }
 
 # Create an SSH connection instance (Context Manager Method)
