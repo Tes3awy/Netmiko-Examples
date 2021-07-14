@@ -12,7 +12,7 @@ device = {
     "port": 22,  # Optional (Default to 22 for SSH and 23 for telnet)
     "verbose": True,  # Optional (Default False)
     "session_log": "ex0-session.txt",  # Optional (No default value)
-    "fact_cli": False,  # (Multiplies delay factor by 0.1)
+    "fast_cli": False,  # (Multiplies delay factor by 0.1)
     "global_delay_factor": 2,  # Optional (Default to 1. 1 == 100 seconds)
     "conn_timeout": 12,  # Time duration to keep trying to connect to the device (seconds)
 }
