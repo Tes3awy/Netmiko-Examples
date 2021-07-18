@@ -12,10 +12,10 @@ devices = [
     },
     {
         "device_type": "cisco_ios",
-        "ip": "ios-xe-mgmt.cisco.com",
+        "ip": "sandbox-iosxe-recomm-1.cisco.com",
         "username": "developer",
         "password": "C1sco12345",
-        "port": 8181,
+        "port": 22,
     },
 ]
 
