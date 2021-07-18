@@ -52,4 +52,4 @@ Examples in `netmiko` and `requests` folder uses some Python libraries. These li
 3. XlsxWriter **v1.4.4** (XlsxWriter is a Python module for creating Excel XLSX files) [Documentation Link](https://xlsxwriter.readthedocs.io/).
 4. Pandas **v1.3.0** (Data Analysis Library) [Documentation Link](https://pandas.pydata.org/docs/).
 5. Openpyxl **v3.0.7** (A Python library to read/write Excel 2010 xlsx/xlsm files) [Documentation Link](https://openpyxl.readthedocs.io/en/stable/).
-6. Requests **v2.25.1** (HTTP Requests) [Documentation Link](https://docs.python-requests.org/en/master/).
+6. Requests **v2.26.0** (HTTP Requests) [Documentation Link](https://docs.python-requests.org/en/master/).
