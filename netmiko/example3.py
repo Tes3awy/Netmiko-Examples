@@ -27,7 +27,7 @@ for device in devices:
         hostname = net_connect.send_command(
             command_string="show version", use_textfsm=True
         )[0]["hostname"]
-        run_cfg = net_connect.send_command(command_string="show running-config")
+        run_cfg: str = net_connect.send_command(command_string="show running-config")
 
     # Create files with device hostnames and save show running-config output to
     with open(file=f"{hostname}_ex3-run-cfg.txt", mode="w") as outfile:

@@ -23,9 +23,9 @@ devices = [
 ]
 
 # Create an Excel file
-with xlsxwriter.Workbook(filename="Example4-2-Inventory-Details.xlsx") as workbook:
+with xlsxwriter.Workbook(filename="Example4-2-Device-Details.xlsx") as workbook:
     # Create an Excel sheet within the file
-    worksheet = workbook.add_worksheet("Inventory Details")
+    worksheet = workbook.add_worksheet(name="Device List")
 
     worksheet.autofilter("A1:K1")
     worksheet.freeze_panes(1, 1)
@@ -57,7 +57,9 @@ with xlsxwriter.Workbook(filename="Example4-2-Inventory-Details.xlsx") as workbo
     for device in devices:
         # Create a connection instance
         with ConnectHandler(**device) as net_connect:
-            facts = net_connect.send_command("show version", use_textfsm=True)
+            facts = net_connect.send_command(
+                command_string="show version", use_textfsm=True
+            )
 
         # Loop over each value in facts variable and insert each value
         # in the corresponding cell according to the header above

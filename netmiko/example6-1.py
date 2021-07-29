@@ -45,7 +45,7 @@ with xlsxwriter.Workbook(filename="Example6-1-IP-Interface-Brief.xlsx") as workb
         id += 1
 
         # Add worksheet with hostname of the device-ID
-        worksheet = workbook.add_worksheet(f"{hostname}-{id}")
+        worksheet = workbook.add_worksheet(name=f"{hostname}-{id}")
 
         # Worksheet customizations
         worksheet.autofilter("A1:D1")

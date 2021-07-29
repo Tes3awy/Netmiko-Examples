@@ -6,10 +6,10 @@ import pandas as pd
 from netmiko import ConnectHandler
 
 # Read Excel file of .xlsx format
-data = pd.read_excel(io="Example4-Inventory-Details.xlsx", sheet_name=0)
+data = pd.read_excel(io="Example4-Device-Details.xlsx", sheet_name=0)
 
 # Convert data to data frame
-df = pd.DataFrame(data)
+df = pd.DataFrame(data=data)
 
 # Conevrt data frame from MGMT IP Address to a list
 device_ip_list = df.iloc[:, 1].tolist()
@@ -36,7 +36,7 @@ for device in devices:
         hostname = net_connect.send_command(
             command_string="show version", use_textfsm=True
         )[0]["hostname"]
-        run_cfg = net_connect.send_command(command_string="show running-config")
+        run_cfg: str = net_connect.send_command(command_string="show running-config")
 
     # Create .txt for each running configuration of each device
     with open(file=f"{hostname}_ex7-run-cfg.txt", mode="w") as outfile:

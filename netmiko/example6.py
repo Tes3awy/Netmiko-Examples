@@ -11,8 +11,8 @@ from netmiko import ConnectHandler
 # Create an Excel file
 workbook = xlsxwriter.Workbook(filename="Example6-Inventory-CSV.xlsx")
 # Create two Excel sheets within the file
-worksheet1 = workbook.add_worksheet("Inventory")
-worksheet2 = workbook.add_worksheet("ip interface brief output")
+worksheet1 = workbook.add_worksheet(name="Inventory")
+worksheet2 = workbook.add_worksheet(name="ip interface brief output")
 
 worksheet1.autofilter("A1:B1")
 worksheet2.autofilter("A1:E1")

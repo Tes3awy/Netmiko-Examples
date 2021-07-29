@@ -46,7 +46,7 @@ with ExcelWriter(path=excel_file) as writer:
     # Create a data frame from the ouput list
     df = (
         pd.DataFrame(output)
-        .reindex(
+        .reindex(  # to reorder the columns
             columns=[
                 "hostname",
                 "serial",
@@ -56,24 +56,24 @@ with ExcelWriter(path=excel_file) as writer:
                 "version",
                 "running_image",
                 "reload_reason",
-                "restarted",
                 "uptime",
+                "restarted",
                 "config_register",
             ]
         )
-        .rename(
+        .rename(  # Rename the columns header
             columns={
-                "hostname": "Hostname",
+                "hostname": "Device Hostname",
                 "serial": "Serial Number",
                 "mac": "MAC Address",
                 "hardware": "Device Model",
-                "rommon": "Software Type",
-                "version": "Software Version",
+                "rommon": "SW Type",
+                "version": "SW Version",
                 "running_image": "Running Image",
                 "reload_reason": "Last Reload Reason",
-                "restarted": "Restarted",
-                "uptime": "Device Uptime",
-                "config_register": "Configuration Register",
+                "uptime": "Uptime",
+                "restarted": "Restarted at",
+                "config_register": "Config Register",
             }
         )
     )

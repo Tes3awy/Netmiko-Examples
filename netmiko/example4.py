@@ -23,9 +23,9 @@ devices = [
 ]
 
 # Create an Excel file
-workbook = xlsxwriter.Workbook(filename="Example4-Inventory-Details.xlsx")
+workbook = xlsxwriter.Workbook(filename="Example4-Device-Details.xlsx")
 # Create an Excel sheet within the file
-worksheet = workbook.add_worksheet("Inventory Details")
+worksheet = workbook.add_worksheet(name="Device List")
 
 worksheet.autofilter("A1:K1")
 worksheet.freeze_panes(1, 1)

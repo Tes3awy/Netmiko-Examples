@@ -43,7 +43,7 @@ with xlsxwriter.Workbook(filename="Example5-1-CDP-Neighbors-Details.xlsx") as wo
             )
 
         # Create a sheet for each device
-        worksheet = workbook.add_worksheet(f"{hostname} Neighbors")
+        worksheet = workbook.add_worksheet(name=f"{hostname} Neighbors")
 
         # Worksheet customizations
         worksheet.autofilter("A1:H1")
@@ -80,7 +80,7 @@ with xlsxwriter.Workbook(filename="Example5-1-CDP-Neighbors-Details.xlsx") as wo
                 row += 1
         else:
             print(
-                f"{cdp_neighbors_detail}. Please run `cdp run` command in Global Config mode on {hostname}"
+                f"{cdp_neighbors_detail}. Please run `(config)# cdp run` command on {hostname}"
             )
 
 print("Done")

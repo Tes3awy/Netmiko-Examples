@@ -11,7 +11,7 @@ from netmiko import ConnectHandler
 data = pd.read_excel(io="Example4-Inventory-Details.xlsx", sheet_name=0, usecols="B")
 
 # Convert data to data frame
-df = pd.DataFrame(data)
+df = pd.DataFrame(data=data)
 
 # Conevrt data frame from MGMT IP Address to a list
 # Now column is 0 because it is the only column read in data variable
@@ -40,11 +40,11 @@ for device in devices:
             hostname = net_connect.send_command(
                 command_sting="show version", use_textfsm=True
             )[0]["hostname"]
-            run_cfg = net_connect.send_command(command_sting="show running-config")
+            run_cfg: str = net_connect.send_command(command_sting="show running-config")
         # Create .txt for each running configuration of each device
         with open(file=f"{hostname}_ex7-run-cfg.txt", mode="w") as outfile:
             outfile.write(run_cfg.lstrip())
-    except Exception as ex:  # Handle any exception
-        raise SystemExit(ex)
+    except Exception as e:  # Handle any exception
+        raise SystemExit(e)
 
 print("Done")

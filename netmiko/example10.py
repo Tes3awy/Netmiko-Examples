@@ -14,9 +14,8 @@ device = {
 }
 
 # Define guessing variables
-guesser = SSHDetect(**device)
-best_match = guesser.autodetect()
-print("\nDevice Type Best Match:", best_match, "\n")
+best_match = SSHDetect(**device).autodetect()
+print("\nDevice Type Best Match:", best_match, end="\n\n")
 
 # Override autodetect value with the best match
 device["device_type"] = best_match

@@ -37,7 +37,7 @@ with xlsxwriter.Workbook(filename="Example5-Show-Inventory.xlsx") as workbook:
             )
 
         # Create worksheet by hostname of each device
-        worksheet = workbook.add_worksheet(f"{hostname} Inventory")
+        worksheet = workbook.add_worksheet(name=f"{hostname} Inventory")
 
         # Worksheet customizations
         worksheet.autofilter("A1:D1")
@@ -47,7 +47,7 @@ with xlsxwriter.Workbook(filename="Example5-Show-Inventory.xlsx") as workbook:
         header = {
             "A1": "Module Name",
             "B1": "Serial Number",
-            "C1": "Product ID",
+            "C1": "Product ID (PID)",
             "D1": "Description",
         }
 

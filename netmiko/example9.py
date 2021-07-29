@@ -21,7 +21,7 @@ with ConnectHandler(**nxos_device) as net_connect:
     hostname = net_connect.send_command(
         command_string="show version", use_textfsm=True
     )[0]["hostname"]
-    run_cfg = net_connect.send_command(command_string="show running-config")
+    run_cfg: str = net_connect.send_command(command_string="show running-config")
 
 with open(file=f"{hostname}-run-cfg.txt", mode="w") as outfile:
     outfile.write(run_cfg.lstrip())
