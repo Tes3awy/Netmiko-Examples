@@ -58,6 +58,6 @@ with open("devices-config.json", "w") as jsonfile:
 # Save each device configuration to a text file using the id from devices_config response
 for config in devices_config:
     with open(f'{config["id"]}.txt', "w") as outfile:
-        outfile.write(config["runningConfig"].strip())
+        outfile.write(config["runningConfig"].lstrip())
 
 print("Done")
