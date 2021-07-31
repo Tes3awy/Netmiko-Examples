@@ -63,7 +63,7 @@ with xlsxwriter.Workbook(filename="Example6-1-IP-Interface-Brief.xlsx") as workb
             worksheet.write(cell, value)
 
         # Initial values for row and col
-        row, col = 1, 0
+        row, col = (1, 0)
 
         # Get intf values from output
         for intf in output:

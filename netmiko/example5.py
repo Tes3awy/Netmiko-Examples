@@ -47,7 +47,8 @@ with xlsxwriter.Workbook(filename="Example5-Show-Inventory.xlsx") as workbook:
         header = {
             "A1": "Module Name",
             "B1": "Serial Number",
-            "C1": "Product ID (PID)",
+            "C1": "Product ID (pid)",
+            # Don't need Version Identifier (vid)
             "D1": "Description",
         }
 
@@ -56,7 +57,7 @@ with xlsxwriter.Workbook(filename="Example5-Show-Inventory.xlsx") as workbook:
             worksheet.write(cell, value)
 
         # Starting values for row and column in the Excel workbook
-        row, col = 1, 0
+        row, col = (1, 0)
 
         for module in inventory:
             worksheet.write(row, col + 0, module["name"])

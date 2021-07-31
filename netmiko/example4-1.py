@@ -51,7 +51,7 @@ with xlsxwriter.Workbook(filename="Example4-1-Device-Details.xlsx") as workbook:
         worksheet.write(cell, value)
 
     # Starting values for row and column in the Excel workbook
-    row, col = 1, 0
+    row, col = (1, 0)
     # OR
     # row = 1
     # col = 0
