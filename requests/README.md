@@ -1,6 +1,6 @@
 # Examples Explanation
 
-> If you don't have the `requests` library installed on your PC, type:
+> If you don't have the `requests` and `xlsxwriter` library installed on your PC, type:
 
 ```powershell
 path_to\requests> pip install -r requirements.txt --user
