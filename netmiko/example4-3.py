@@ -15,6 +15,7 @@ devices = [
         "username": "developer",
         "password": "C1sco12345",
         "port": 22,
+        "fast_cli": False,
     },
     {
         "device_type": "cisco_ios",
@@ -22,6 +23,7 @@ devices = [
         "username": "developer",
         "password": "C1sco12345",
         "port": 22,
+        "fast_cli": False,
     },
 ]
 

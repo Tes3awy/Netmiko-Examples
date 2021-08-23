@@ -11,6 +11,7 @@ device = {
     "username": "developer",
     "password": "C1sco12345",
     "port": 22,
+    "fast_cli": False,
 }
 
 # Define guessing variables

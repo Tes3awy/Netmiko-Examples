@@ -32,6 +32,7 @@ for ip in device_ip_list:
             "password": "C1sco12345",  # must be the same for all devices
             "port": 22,  # must be the same for all devices
             # If port for all devices is not 22 you will get an error
+            "fast_cli": False,
         }
     )
 

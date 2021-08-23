@@ -12,6 +12,7 @@ nxos_device = {
     "port": 22,  # Optional (Default to 22 for SSH)
     "verbose": True,  # Optional (Default False)
     "session_log": "ex9-nxos-session.txt",  # Optional (No default value)
+    "fast_cli": False,
     "global_delay_factor": 2,  # Optional (Default to 1)
 }
 
