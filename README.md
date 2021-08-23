@@ -4,7 +4,7 @@
 ![Repo Size](https://img.shields.io/github/repo-size/Tes3awy/Netmiko-Examples?label=Repo%20size&style=flat-square)
 [![Issues Open](https://img.shields.io/github/issues/Tes3awy/Netmiko-Examples?label=Issues&style=flat-square)](https://github.com/Tes3awy/Netmiko-Examples/issues)
 ![Releases Download](https://img.shields.io/github/downloads/Tes3awy/Netmiko-Examples/total?label=Downloads&style=flat-square)
-[![Commit Activity](https://img.shields.io/github/commit-activity/m/Tes3awy/Netmiko-Examples?label=Commit%20activity&style=flat-square)](https://github.com/Tes3awy/Netmiko-Examples/commits/main)
+[![Commit Activity](https://img.shields.io/github/commit-activity/m/Tes3awy/Netmiko-Examples?label=Commit%20activity&style=flat-square)](https://github.com/Tes3awy/Netmiko-Examples)
 ![Last Commit](https://img.shields.io/github/last-commit/Tes3awy/Netmiko-Examples?label=Last%20commit&style=flat-square)
 [![License](https://img.shields.io/github/license/Tes3awy/Netmiko-Examples?label=License&style=flat-square&color=purple)](https://github.com/Tes3awy/Netmiko-Examples/blob/main/LICENSE)
 [![Black](https://img.shields.io/badge/code%20style-black-000000.svg?style=flat-square)](https://github.com/psf/black)
