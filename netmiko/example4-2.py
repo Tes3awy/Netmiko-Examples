@@ -29,7 +29,7 @@ with xlsxwriter.Workbook(filename="Example4-2-Device-Details.xlsx") as workbook:
     # Create an Excel sheet within the file
     worksheet = workbook.add_worksheet(name="Device List")
 
-    worksheet.autofilter("A1:K1")
+    worksheet.autofilter("A1:L1")
     worksheet.freeze_panes(1, 1)
 
     # Create Header cell for each entry
@@ -52,8 +52,10 @@ with xlsxwriter.Workbook(filename="Example4-2-Device-Details.xlsx") as workbook:
     for cell, value in header.items():
         worksheet.write(cell, value)
 
-    # Starting values for row and column in the Excel workbook
-    row, col = (1, 0)
+    # Starting values for row only in the Excel workbook
+    # Column will be indicated by its letter (A, B, C, etc) not index
+    # Since we are using Column letters, we need to start at 2 because A1, B1, C1, etc is the header
+    row = 2
 
     # Loop over devices
     for device in devices:
@@ -66,27 +68,27 @@ with xlsxwriter.Workbook(filename="Example4-2-Device-Details.xlsx") as workbook:
         # Loop over each value in facts variable and insert each value
         # in the corresponding cell according to the header above
         for fact in facts:
-            worksheet.write(row, col + 0, fact["hostname"])
-            worksheet.write(row, col + 1, device["ip"])  # use IP from device variable
-            worksheet.write(row, col + 2, fact["serial"][0])
+            worksheet.write(f"A{row}", fact["hostname"])
+            worksheet.write(f"B{row}", device["ip"])  # use IP from device variable
+            worksheet.write(f"C{row}", fact["serial"][0])
             # Try/except block to handle IndexError
             try:
-                worksheet.write(row, col + 3, fact["mac"][0])
+                worksheet.write(f"D{row}", fact["mac"][0])
             except IndexError:
                 # if device is a CSR router, then it has no MAC Address
-                worksheet.write(row, col + 3, "N/A")
-            worksheet.write(row, col + 4, fact["hardware"][0])
-            worksheet.write(row, col + 5, fact["version"])
-            worksheet.write(row, col + 6, fact["rommon"])
+                worksheet.write(f"D{row}", "N/A")
+            worksheet.write(f"E{row}", fact["hardware"][0])
+            worksheet.write(f"F{row}", fact["version"])
+            worksheet.write(f"G{row}", fact["rommon"])
             # Checking if `bin` is in fact["running_image"]
             if "bin" in fact["running_image"]:
-                worksheet.write(row, col + 7, "Bundle")
+                worksheet.write(f"H{row}", "Bundle")
             else:
-                worksheet.write(row, col + 7, "Install")
-            worksheet.write(row, col + 8, fact["reload_reason"])
-            worksheet.write(row, col + 9, fact["restarted"])
-            worksheet.write(row, col + 10, fact["uptime"])
-            worksheet.write(row, col + 11, fact["config_register"])
+                worksheet.write(f"H{row}", "Install")
+            worksheet.write(f"I{row}", fact["reload_reason"])
+            worksheet.write(f"J{row}", fact["restarted"])
+            worksheet.write(f"K{row}", fact["uptime"])
+            worksheet.write(f"L{row}", fact["config_register"])
             # Jump to next row
             row += 1
 

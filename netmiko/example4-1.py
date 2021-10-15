@@ -29,7 +29,7 @@ with xlsxwriter.Workbook(filename="Example4-1-Device-Details.xlsx") as workbook:
     # Create an Excel sheet within the file
     worksheet = workbook.add_worksheet(name="Device List")
 
-    worksheet.autofilter("A1:K1")
+    worksheet.autofilter("A1:L1")
     worksheet.freeze_panes(1, 1)
 
     # Create Header cell for each entry

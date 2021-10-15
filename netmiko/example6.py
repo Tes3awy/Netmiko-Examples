@@ -44,7 +44,9 @@ for cell, value in header2.items():
 devices = []
 
 # Read devices from device_list.csv CSV file
-with open(file="device_list.csv", mode="r") as csvfile:  # notice mode is r: read
+with open(
+    file="device_list.csv", mode="rt", newline=""
+) as csvfile:  # notice mode is rt: read text
     next(csvfile)  # Use next() function to skip the header line in the csv file
     # Each value is seperated based on the delimiter (comma (,))
     device_list = csv.reader(csvfile, dialect="excel", delimiter=",")
@@ -57,14 +59,15 @@ with open(file="device_list.csv", mode="r") as csvfile:  # notice mode is r: rea
                 "username": device[2],
                 "password": device[3],
                 "port": device[4],
+                "fast_cli": False,
             }
         )
 
 # Starting values for row and column in the Excel sheets
 # sheet 1
-row1, col1 = 1, 0
+row1, col1 = (1, 0)
 # sheet 2
-row2, col2 = 1, 0
+row2, col2 = (1, 0)
 
 # Loop over devices
 for device in devices:
@@ -75,10 +78,10 @@ for device in devices:
             command_string="show version", use_textfsm=True
         )[0]["hostname"]
         inventory = net_connect.send_command(
-            command_string="show inventory", use_textfsm=True, delay_factor=3
+            command_string="show inventory", use_textfsm=True
         )
         intf_brief = net_connect.send_command(
-            command_string="show ip interface brief", use_textfsm=True, delay_factor=3
+            command_string="show ip interface brief", use_textfsm=True
         )
 
     # Pick only "Chassis" serial number and save in sheet 1

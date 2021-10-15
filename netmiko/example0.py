@@ -10,11 +10,12 @@ device = {
     "password": "C1sco12345",
     "secret": "",  # Optional (Default empty, Enable secret)
     "port": 22,  # Optional (Default to 22 for SSH and 23 for telnet)
-    "verbose": True,  # Optional (Default False)
+    "verbose": True,  # Optional (Default False) (Works with SSH only)
     "session_log": "ex0-session.txt",  # Optional (No default value)
     "fast_cli": False,  # (Multiplies delay factor by 0.1)
     "global_delay_factor": 2,  # Optional (Default to 1. 1 == 100 seconds)
-    "conn_timeout": 12,  # Time duration to keep trying to connect to the device (seconds)
+    "conn_timeout": 20,  # Time duration to keep trying to connect to the device (seconds)
+    "auth_timeout": 20,  # Time duration to keep trying to auth to the device (seconds)
 }
 
 # Create an SSH connection instance (Traditional Method)

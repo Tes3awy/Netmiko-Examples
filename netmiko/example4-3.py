@@ -30,9 +30,6 @@ devices = [
 # Create an empty list to hold all dicts
 output = []
 
-# Command to send
-cmd = "show version"
-
 # Name of exported excel file
 excel_file = "Example4-3-Inventory-Details-pandas.xlsx"
 
@@ -41,13 +38,15 @@ with ExcelWriter(path=excel_file) as writer:
     for device in devices:
         # Create a connection instance to each device
         with ConnectHandler(**device) as net_connect:
-            facts = net_connect.send_command(command_string=cmd, use_textfsm=True)
+            facts = net_connect.send_command(
+                command_string="show version", use_textfsm=True
+            )
         # Append the show command output to the `output` empty list
         output.append(facts[0])
 
     # Create a data frame from the ouput list
     df = (
-        pd.DataFrame(output)
+        pd.DataFrame(data=output)
         .reindex(  # to reorder the columns
             columns=[
                 "hostname",

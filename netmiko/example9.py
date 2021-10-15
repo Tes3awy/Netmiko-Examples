@@ -8,11 +8,11 @@ nxos_device = {
     "ip": "sbx-nxos-mgmt.cisco.com",
     "username": "admin",
     "password": "Admin_1234!",
-    "secret": "",  # Optional (Enable secret)
+    "secret": "",  # Optional (Enable Password)
     "port": 22,  # Optional (Default to 22 for SSH)
     "verbose": True,  # Optional (Default False)
     "session_log": "ex9-nxos-session.txt",  # Optional (No default value)
-    "fast_cli": False,
+    "fast_cli": False,  # Recommended (Default True)
     "global_delay_factor": 2,  # Optional (Default to 1)
 }
 

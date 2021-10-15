@@ -27,7 +27,6 @@ devices = [
 
 # Create an Excel file
 with xlsxwriter.Workbook(filename="Example6-1-IP-Interface-Brief.xlsx") as workbook:
-    id = 0  # ID to differentiate devices of same hostname
     # Iterate over devices
     for device in devices:
         # Create a connection instance to each device
@@ -42,9 +41,6 @@ with xlsxwriter.Workbook(filename="Example6-1-IP-Interface-Brief.xlsx") as workb
                 use_textfsm=True,
                 delay_factor=2,
             )
-
-        # Increment ID
-        id += 1
 
         # Add worksheet with hostname of the device-ID
         worksheet = workbook.add_worksheet(name=f"{hostname}-{id}")

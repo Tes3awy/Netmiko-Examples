@@ -48,7 +48,7 @@ with xlsxwriter.Workbook(filename="Example5-1-CDP-Neighbors-Details.xlsx") as wo
         worksheet = workbook.add_worksheet(name=f"{hostname} Neighbors")
 
         # Worksheet customizations
-        worksheet.autofilter("A1:H1")
+        worksheet.autofilter("A1:G1")
         worksheet.freeze_panes(1, 1)
 
         # Create Header line
@@ -68,7 +68,7 @@ with xlsxwriter.Workbook(filename="Example5-1-CDP-Neighbors-Details.xlsx") as wo
 
         # Check if cdp is enabled on that Cisco device
         if "% CDP is not enabled" not in cdp_neighbors_detail:
-            print(f"Found cdp neighbors for {hostname}")
+            print(f"Found {len(cdp_neighbors_detail)} cdp neighbors for {hostname}")
             # Loop over dicts in cdp neighbors detail list
             for neighbor in cdp_neighbors_detail:
                 worksheet.write(row, col + 0, neighbor["local_port"])
