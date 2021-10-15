@@ -34,7 +34,7 @@ path_to\netmiko> pip install -r requirements.txt --user
 
 ## Example 4-2
 
-> Same as example 4 using Context Manager for xlsxwriter.
+> Same as example 4 using Context Manager for xlsxwriter (and another method to insert data into sheet cells)
 
 ## Example 4-3
 

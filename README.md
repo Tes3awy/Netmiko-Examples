@@ -53,8 +53,8 @@ path_to\folder> python example*.py ↵
 Examples in `netmiko` and `requests` folder uses some Python libraries. These libraries are:
 
 1. Netmiko **v3.4.0** (Multi-vendor library to simplify Paramiko SSH connections to network devices) [Documentation Link](https://github.com/ktbyers/netmiko/blob/develop/README.md)
-2. NTC Templates **v2.3.1** (TextFSM templates for parsing show commands of network devices) [Documentation Link](https://github.com/networktocode/ntc-templates)
+2. NTC Templates **v2.3.2** (TextFSM templates for parsing show commands of network devices) [Documentation Link](https://github.com/networktocode/ntc-templates)
 3. XlsxWriter **v3.0.1** (XlsxWriter is a Python module for creating Excel XLSX files) [Documentation Link](https://xlsxwriter.readthedocs.io/)
-4. Pandas **v1.3.2** (Data Analysis Library) [Documentation Link](https://pandas.pydata.org/docs/).
-5. Openpyxl **v3.0.7** (A Python library to read/write Excel 2010 xlsx/xlsm files) [Documentation Link](https://openpyxl.readthedocs.io/en/stable/)
+4. Pandas **v1.3.3** (Data Analysis Library) [Documentation Link](https://pandas.pydata.org/docs/).
+5. Openpyxl **v3.0.9** (A Python library to read/write Excel 2010 xlsx/xlsm files) [Documentation Link](https://openpyxl.readthedocs.io/en/stable/)
 6. Requests **v2.26.0** (HTTP Requests) [Documentation Link](https://docs.python-requests.org/en/master/)
