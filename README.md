@@ -1,4 +1,4 @@
-> **Last updated: October 15th, 2021**
+> **Last updated: October 23<sup>rd</sup>, 2021**
 
 ![Cisco DevNet](https://img.shields.io/badge/Cisco-DevNet-blue?style=flat-square)
 [![Python 3.6+](https://img.shields.io/badge/Python%203.6+-blue.svg?logo=python&logoColor=yellow&color=black&style=flat-square)](https://www.python.org/downloads)
@@ -21,7 +21,7 @@
 
 ## How to use?
 
-1. `Clone` this repo or `Download ZIP` by clicking on <img src="assets/code-button.png" alt="Code Button" title="Button" width="80"/> up above.
+1. `Clone` this repo or `Download ZIP` by clicking on <img src="assets/code-button.png" alt="Code Button" title="Button" width="80" align="center"/> up above.
    _(Alternativley, you can click on Releases on the right hand side and download the latest release)_
 
 2. Once downloaded, extract the ZIP file and `cd` into `netmiko` folder or `requests` folder.
@@ -31,7 +31,11 @@
 4. Open `requirements.txt` file and if any of the libraries is not installed on your PC, run the following command in the PowerShell terminal:
 
 ```powershell
-path_to\folder> pip install -r requirements.txt --user ↵
+path_to\folder> cd netmiko
+netmiko> pip install -r requirements.txt --user ↵
+
+path_to\folder> cd requests
+requests> pip install -r requirements.txt --user ↵
 ```
 
 > If the libraries already installed but not the same version as in `requirements.txt`, then add `--upgrade` flag to the `pip install` command:
@@ -57,6 +61,6 @@ Examples in `netmiko` and `requests` folder uses some Python libraries. These li
 1. Netmiko **v3.4.0** (Multi-vendor library to simplify Paramiko SSH connections to network devices) [Documentation Link](https://github.com/ktbyers/netmiko/blob/develop/README.md)
 2. NTC Templates **v2.3.2** (TextFSM templates for parsing show commands of network devices) [Documentation Link](https://github.com/networktocode/ntc-templates)
 3. XlsxWriter **v3.0.1** (XlsxWriter is a Python module for creating Excel XLSX files) [Documentation Link](https://xlsxwriter.readthedocs.io/)
-4. Pandas **v1.3.3** (Data Analysis Library) [Documentation Link](https://pandas.pydata.org/docs/).
+4. Pandas **v1.3.4** (Data Analysis Library) [Documentation Link](https://pandas.pydata.org/docs/).
 5. Openpyxl **v3.0.9** (A Python library to read/write Excel 2010 xlsx/xlsm files) [Documentation Link](https://openpyxl.readthedocs.io/en/stable/)
 6. Requests **v2.26.0** (HTTP Requests) [Documentation Link](https://docs.python-requests.org/en/master/)
